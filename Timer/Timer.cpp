@@ -1,14 +1,14 @@
 #include <Timer.h>
 #include <Arduino.h>
 
-long timerTime = 0,
+int timerTime = 0,
   elapsedTime = 0,
   timeStartValue = 0;
 
 Timer::Timer() {
 }
 
-long Timer::getTime(bool check) {
+int Timer::getTime(bool check) {
   if (check) {
     elapsedTime = millis() - timerTime + timeStartValue;
   }
@@ -19,7 +19,7 @@ void Timer::reset() {
   timerTime = timeStartValue;
 }
 
-void Timer::setTime(long amount) {
+void Timer::setTime(int amount) {
   timeStartValue = amount;
 }
 
