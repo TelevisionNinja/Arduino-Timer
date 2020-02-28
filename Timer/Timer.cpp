@@ -1,32 +1,40 @@
 #include <Timer.h>
 #include <Arduino.h>
 
-int timerTime = 0,
+int initialTime = 0,
   elapsedTime = 0,
   timeStartValue = 0;
 
 Timer::Timer() {
 }
 
-int Timer::getTime(bool check) {
-  if (check) {
-    elapsedTime = millis() - timerTime + timeStartValue;
-  }
-  return elapsedTime;
+//starts the timer
+void Timer::start() {
+  initialTime = millis();
 }
 
-void Timer::reset() {
-  timerTime = timeStartValue;
+//stops the timer
+void Timer::stop() {
+  elapsedTime = millis() - initialTime + timeStartValue;
 }
 
+//sets the starting point of the timer to a given initial amount in milliseconds
 void Timer::setTime(int amount) {
   timeStartValue = amount;
 }
 
-void Timer::start() {
-  timerTime = millis();
+/*
+  if check is true, getTime() returns the time the timer is currrently at
+  if check is false, getTime() returns the time that the timer is stopped on
+  */
+int Timer::getTime(bool check) {
+  if (check) {
+    elapsedTime = millis() - initialTime + timeStartValue;
+  }
+  return elapsedTime;
 }
 
-void Timer::stop() {
-  elapsedTime = millis() - timerTime + timeStartValue;
+//sets the timer back to 0 or a given starting point
+void Timer::reset() {
+  initialTime = timeStartValue;
 }
