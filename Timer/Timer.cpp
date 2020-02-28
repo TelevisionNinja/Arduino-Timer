@@ -16,7 +16,7 @@ long Timer::getTime(bool check) {
 }
 
 void Timer::reset() {
-  timerTime = 0;
+  timerTime = timeStartValue;
 }
 
 void Timer::setTime(long amount) {
