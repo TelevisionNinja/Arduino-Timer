@@ -1,6 +1,7 @@
 Timer	KEYWORD1
-getTime	KEYWORD2
-reset	KEYWORD2
-setTime	KEYWORD2
 start	KEYWORD2
 stop	KEYWORD2
+setStartValue	KEYWORD2
+getStartValue	KEYWORD2
+getTime	KEYWORD2
+reset	KEYWORD2
