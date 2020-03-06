@@ -4,9 +4,11 @@
 class Timer {
     public:
         Timer();
+        Timer(int initialTime);
         int getTime(bool check);
+        int getStartValue();
         void reset();
-        void setTime(int amount);
+        void setStartValue(int amount);
         void start();
         void stop();
 };

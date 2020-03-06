@@ -5,7 +5,13 @@ int initialTime = 0,
   elapsedTime = 0,
   timeStartValue = 0;
 
+//creates a timer that starts at zero
 Timer::Timer() {
+}
+
+//creates a timer with a set initial starting time
+Timer::Timer(int startingTime) {
+  timeStartValue = startingTime;
 }
 
 //starts the timer
@@ -19,8 +25,13 @@ void Timer::stop() {
 }
 
 //sets the starting point of the timer to a given initial amount in milliseconds
-void Timer::setTime(int amount) {
+void Timer::setStartValue(int amount) {
   timeStartValue = amount;
+}
+
+//returns the set starting amount
+int Timer::getStartValue() {
+  return timeStartValue;
 }
 
 /*
@@ -36,5 +47,5 @@ int Timer::getTime(bool check) {
 
 //sets the timer back to 0 or a given starting point
 void Timer::reset() {
-  initialTime = timeStartValue;
+  elapsedTime = timeStartValue;
 }
