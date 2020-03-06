@@ -4,11 +4,11 @@
 class Timer {
     public:
         Timer();
-        Timer(int initialTime);
-        int getTime(bool check);
-        int getStartValue();
+        Timer(unsigned long initialTime);
+        unsigned long getTime(bool check);
+        unsigned long getStartValue();
         void reset();
-        void setStartValue(int amount);
+        void setStartValue(unsigned long amount);
         void start();
         void stop();
 };

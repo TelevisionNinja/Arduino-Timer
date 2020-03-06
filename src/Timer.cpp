@@ -1,7 +1,7 @@
 #include <Timer.h>
 #include <Arduino.h>
 
-int initialTime = 0,
+unsigned long initialTime = 0,
   elapsedTime = 0,
   timeStartValue = 0;
 
@@ -10,7 +10,7 @@ Timer::Timer() {
 }
 
 //creates a timer with a set initial starting time
-Timer::Timer(int startingTime) {
+Timer::Timer(unsigned long startingTime) {
   timeStartValue = startingTime;
 }
 
@@ -25,12 +25,12 @@ void Timer::stop() {
 }
 
 //sets the starting point of the timer to a given initial amount in milliseconds
-void Timer::setStartValue(int amount) {
+void Timer::setStartValue(unsigned long amount) {
   timeStartValue = amount;
 }
 
 //returns the set starting amount
-int Timer::getStartValue() {
+unsigned long Timer::getStartValue() {
   return timeStartValue;
 }
 
@@ -38,7 +38,7 @@ int Timer::getStartValue() {
   if check is true, getTime() returns the time the timer is currrently at
   if check is false, getTime() returns the time that the timer is stopped on
   */
-int Timer::getTime(bool check) {
+unsigned long Timer::getTime(bool check) {
   if (check) {
     elapsedTime = millis() - initialTime + timeStartValue;
   }
