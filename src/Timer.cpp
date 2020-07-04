@@ -40,7 +40,7 @@ unsigned long Timer::getStartValue() {
   */
 unsigned long Timer::getTime(bool check) {
   if (check) {
-    elapsedTime = millis() - initialTime + timeStartValue;
+    return millis() - initialTime + timeStartValue;
   }
   return elapsedTime;
 }
