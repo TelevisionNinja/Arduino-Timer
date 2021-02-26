@@ -1,16 +1,26 @@
-#ifndef Timer_h
-#define Timer_h
+#ifndef TIMER_H
+#define TIMER_H
+
+#include <Arduino.h>
 
 class Timer {
     public:
         Timer();
-        Timer(unsigned long initialTime);
-        unsigned long getTime(bool check);
-        unsigned long getStartValue();
-        void reset();
-        void setStartValue(unsigned long amount);
-        void start();
-        void stop();
+        Timer(unsigned long startingValue);
+
+        unsigned long getTime(),
+            getStartValue();
+
+        void setStartValue(unsigned long value),
+            reset(),
+            start(),
+            stop();
+    private:
+        unsigned long initialTime = 0,
+            elapsedTime = 0,
+            timeStartValue = 0;
+
+        bool isRunning = false;
 };
 
 #endif

@@ -1,4 +1,5 @@
 #include "Timer.h"
+
 Timer timer;
 
 void setup() {
@@ -8,21 +9,31 @@ void setup() {
   timer.start();
   delay(1000);
   timer.stop();
-  Serial.println(timer.getTime(false));//check bool is set to false to get the stopped time
+  Serial.println(timer.getTime());
 
-  // test for checing the time while it is still running
+  //----------------------------------
+
+  // test for getting the time while it is still running
   timer.start();
   delay(1000);
-  Serial.println(timer.getTime(true));//check bool is set to true to check the time
+  Serial.println(timer.getTime());
   timer.stop();
 
-  timer.start();//start the timer for the loop example
+  //----------------------------------
+
+  // start the timer for the loop example
+  timer.start();
 }
 
 void loop() {
-  //loop example
-  if (timer.getTime(true) >= 1000) {//every set time, perform an action
-    Serial.println("check inside a loop");
-    timer.start();//no need to stop and reset the timer, just call start() to set a new initial starting point
+  // loop example
+  unsigned long currentTime = timer.getTime();
+
+  if (currentTime >= 1000) { // every set time, perform an action
+    Serial.print("This is printed every second. Elapsed time: ");
+    Serial.println(currentTime);
+
+    // no need to stop and reset the timer, just call start() to set a new starting point
+    timer.start();
   }
 }

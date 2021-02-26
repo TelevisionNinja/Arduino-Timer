@@ -2,18 +2,22 @@
 A simple stopwatch like timer for arduino
 
 
-start()
-  starts the timer
+Methods
 
-stop()
-  stops the timer
+- start()
+  - starts the timer and resets the elapsed time
 
-setTime(int amount)
-  sets the starting point of the timer to a given initial amount in milliseconds
+- stop()
+  - stops the timer and sets the elapsed time
 
-getTime(bool check)
-  if check is true, getTime() returns the time the timer is currrently at
-  if check is false, getTime() returns the time that the timer is stopped on
+- setStartValue(unsigned long value)
+  - sets the starting point of the timer to a given initial value (in milliseconds)
 
-reset()
-  sets the timer back to 0 or a given starting point
+- getStartValue()
+  - returns the set starting value (in milliseconds)
+
+- getTime()
+  - returns the time the timer is currrently at or stopped on
+
+- reset()
+  - sets the timer back to 0 or the starting value if one is set and stops the timer if it's running
