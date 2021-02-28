@@ -18,7 +18,7 @@ class Timer {
     private:
         unsigned long initialTime = 0,
             elapsedTime = 0,
-            timeStartValue = 0;
+            startValue = 0;
 
         bool isRunning = false;
 };

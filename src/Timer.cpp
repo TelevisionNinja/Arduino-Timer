@@ -6,38 +6,38 @@ Timer::Timer() {
 
 // creates a timer with an initial starting value (in milliseconds)
 Timer::Timer(unsigned long startingValue) {
-  timeStartValue = startingValue;
+  startValue = startingValue;
 }
 
 // starts the timer and resets the elapsed time
 void Timer::start() {
   initialTime = millis();
   isRunning = true;
-  elapsedTime = timeStartValue;
+  elapsedTime = startValue;
 }
 
 // stops the timer and sets the elapsed time
 void Timer::stop() {
   if (isRunning) {
-    elapsedTime = millis() - initialTime + timeStartValue;
+    elapsedTime = millis() - initialTime + startValue;
     isRunning = false;
   }
 }
 
 // sets the starting point of the timer to a given initial value (in milliseconds)
 void Timer::setStartValue(unsigned long value) {
-  timeStartValue = value;
+  startValue = value;
 }
 
 // returns the set starting value (in milliseconds)
 unsigned long Timer::getStartValue() {
-  return timeStartValue;
+  return startValue;
 }
 
 // returns the time the timer is currrently at or stopped on
 unsigned long Timer::getTime() {
   if (isRunning) {
-    return millis() - initialTime + timeStartValue;
+    return millis() - initialTime + startValue;
   }
 
   return elapsedTime;
@@ -45,6 +45,6 @@ unsigned long Timer::getTime() {
 
 // sets the timer back to 0 or the starting value if one is set and stops the timer if it's running
 void Timer::reset() {
-  elapsedTime = timeStartValue;
+  elapsedTime = startValue;
   isRunning = false;
 }
