@@ -18,8 +18,10 @@ void Timer::start() {
 
 // stops the timer and sets the elapsed time
 void Timer::stop() {
-  elapsedTime = millis() - initialTime + timeStartValue;
-  isRunning = false;
+  if (isRunning) {
+    elapsedTime = millis() - initialTime + timeStartValue;
+    isRunning = false;
+  }
 }
 
 // sets the starting point of the timer to a given initial value (in milliseconds)
