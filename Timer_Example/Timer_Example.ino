@@ -10,6 +10,7 @@ void setup() {
   delay(1000);
   timer.stop();
   Serial.println(timer.getTime());
+  timer.reset();
 
   //----------------------------------
 
@@ -17,7 +18,7 @@ void setup() {
   timer.start();
   delay(1000);
   Serial.println(timer.getTime());
-  timer.stop();
+  timer.reset();
 
   //----------------------------------
 
@@ -29,11 +30,12 @@ void loop() {
   // loop example
   unsigned long currentTime = timer.getTime();
 
-  if (currentTime >= 1000) { // every set time, perform an action
+  if (currentTime >= 1000) { // every 1000 ms, print the elapsed time
     Serial.print("This is printed every second. Elapsed time: ");
-    Serial.println(currentTime);
+    Serial.print(currentTime);
+    Serial.println(" ms");
 
-    // no need to stop and reset the timer, just call start() to set a new starting point
+    timer.reset();
     timer.start();
   }
 }

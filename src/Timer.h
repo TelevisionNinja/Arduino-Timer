@@ -6,21 +6,20 @@
 class Timer {
     public:
         Timer();
-        Timer(unsigned long startingValue);
+        ~Timer();
 
-        unsigned long getTime(),
-            getStartValue();
+        unsigned long getTime();
 
-        void setStartValue(unsigned long value),
-            reset(),
+        void reset(),
             start(),
             stop();
-    private:
-        unsigned long initialTime = 0,
-            elapsedTime = 0,
-            startValue = 0;
 
-        bool isRunning = false;
+        bool isRunning();
+    private:
+        unsigned long initialTime,
+            elapsedTime;
+
+        bool running;
 };
 
 #endif

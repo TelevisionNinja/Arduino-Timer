@@ -2,49 +2,58 @@
 
 // creates a timer that starts at zero
 Timer::Timer() {
+  initialTime = 0,
+    elapsedTime = 0;
+
+  running = false;
 }
 
-// creates a timer with an initial starting value (in milliseconds)
-Timer::Timer(unsigned long startingValue) {
-  startValue = startingValue;
+// destructor
+Timer::~Timer() {
+  initialTime = 0,
+    elapsedTime = 0;
+
+  running = false;
 }
 
-// starts the timer and resets the elapsed time
+// starts or resumes the timer. the timer resumes if reset() was not called before start() is called
 void Timer::start() {
-  initialTime = millis();
-  isRunning = true;
-  elapsedTime = startValue;
+  if (!running) {
+    initialTime = millis();
+    running = true;
+  }
 }
 
 // stops the timer and sets the elapsed time
 void Timer::stop() {
-  if (isRunning) {
-    elapsedTime = millis() - initialTime + startValue;
-    isRunning = false;
+  if (running) {
+    if (elapsedTime == 0) {
+      elapsedTime = millis() - initialTime;
+    }
+    else {
+      elapsedTime += millis() - initialTime;
+    }
+
+    running = false;
   }
-}
-
-// sets the starting point of the timer to a given initial value (in milliseconds)
-void Timer::setStartValue(unsigned long value) {
-  startValue = value;
-}
-
-// returns the set starting value (in milliseconds)
-unsigned long Timer::getStartValue() {
-  return startValue;
 }
 
 // returns the time the timer is currrently at or stopped on
 unsigned long Timer::getTime() {
-  if (isRunning) {
-    return millis() - initialTime + startValue;
+  if (running) {
+    return millis() - initialTime + elapsedTime;
   }
 
   return elapsedTime;
 }
 
-// sets the timer back to 0 or the starting value if one is set and stops the timer if it's running
+// sets the timer back to 0 and stops the timer if it's running
 void Timer::reset() {
-  elapsedTime = startValue;
-  isRunning = false;
+  running = false;
+  elapsedTime = 0;
+}
+
+// check if the timer is running
+bool Timer::isRunning() {
+  return running;
 }
